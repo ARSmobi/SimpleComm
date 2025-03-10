@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Чат{% endblock title %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/chat-style.css' %}">
+{% endblock style %}
+
+{% block script %}
+<script defer src="{% static 'js/script.js' %}"></script>
+{% endblock script %}
+
+{% block content %}
+
+    <div id="auth">
+        <h2>Вход</h2>
+        <input type="text" id="username" placeholder="Имя пользователя">
+        <input type="password" id="password" placeholder="Пароль">
+        <button onclick="login()">Войти</button>
+        <button onclick="register()">Регистрация</button>
+    </div>
+
+    <h3 id="user">ttttt</h3>
+    
+    <div id="chat" style="display:none;">
+        <h2>Комнаты</h2>
+        <input type="text" id="roomName" placeholder="Название комнаты">
+        <button onclick="createRoom()">Создать комнату</button>
+        <ul id="roomList"></ul>
+
+        <div id="messagesContainer" style="display:none;">
+            <h3 id="roomTitle"></h3>
+            <button onclick="leaveRoom()">Выйти из комнаты</button>
+            <button onclick="deleteRoom()">Удалить комнату</button>
+            <div id="messages"></div>
+            <input type="text" id="messageInput" placeholder="Введите сообщение">
+            <button onclick="sendMessage()">Отправить</button>
+            <button onclick="logout()">Выйти</button>
+            <div class="messages-container" id="messages"></div>
+        </div>
+    </div>
+    
+{% endblock content %}

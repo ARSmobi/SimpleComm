@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Room</title>
+</head>
+<body>
+    <div id="chat-container">
+        <div id="chat-messages"></div>
+        <input type="text" id="message-input" placeholder="Type your message...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+    <script>
+        const roomName = "{{ room_name }}";
+        const socket = new WebSocket(`ws://${window.location.host}/ws/chat/${roomName}/`);
+        // Обработчик открытия соединения
+        socket.addEventListener('open', (event) => {
+            console.log('WebSocket connection opened:', event);
+        });
+        // Обработчик получения сообщения
+        socket.addEventListener('message', (event) => {
+            const messagesContainer = document.getElementById('chat-messages');
+            const data = JSON.parse(event.data);
+            const message = `${data.username}: ${data.message}`;
+            messagesContainer.innerHTML += `<p>${message}</p>`;
+        });
+        // Обработчик закрытия соединения
+        socket.addEventListener('close', (event) => {
+            console.log('WebSocket connection closed:', event);
+        });
+        // Функция для отправки сообщения
+        function sendMessage() {
+            const inputElement = document.getElementById('message-input');
+            const message = inputElement.value;
+            if (message.trim() !== '') {
+                socket.send(JSON.stringify({ 'message': message }));
+                inputElement.value = '';
+            }
+        }
+    </script>
+</body>
+</html>

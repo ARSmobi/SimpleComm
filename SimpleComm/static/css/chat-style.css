@@ -1,0 +1,60 @@
+.chat-main {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.room-title {
+    text-align: center;
+}
+
+/* Стили для окна сообщений чата */
+
+.room-chat {
+    width: 100%;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    border-radius: 20px 20px 0 0;
+}
+
+.output{
+  width: 100%;
+}
+.msg-right{
+  text-align: end;
+  margin: 5px 20px 5px 50px;
+  background-color: #eee;
+}
+.msg-left{
+  text-align: start;
+  margin: 5px 50px 5px 20px;
+  background-color: #fee;
+}
+.msg-center{
+  text-align: center;
+  margin: 5px;
+}
+
+/* Стили для поля ввода сообщения */
+
+.chat-input {
+    display: flex;
+    width: 100%;
+    height: 40px;
+}
+
+.input-message {
+    width: 100%;
+    border-radius: 0 0 0 20px;
+}
+
+.btn-send {
+    width: 100px;
+    border-radius: 0 0 20px 0;
+    background-color: #0e36f3;
+    color: white;
+}

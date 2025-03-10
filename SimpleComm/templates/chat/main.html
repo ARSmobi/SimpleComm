@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/chat-style.css' %}">
+{% endblock style %}
+
+{% block script %}
+<script defer src="{% static 'js/script.js' %}"></script>
+{% endblock script %}
+
+{% block title %}
+SimpleComm Chat
+{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <div class="chat-main">
+        <div class="room-title"><h3>Заголовок комнаты</h3></div>
+        <div id="chat-messages" class="room-chat"></div>
+        <div class="chat-input">
+            <input type="text" id="input" class="input-message" placeholder="Введите сообщение">
+            <button id="send" onclick="sendMessage()" class="btn-send">Отправить</button>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
